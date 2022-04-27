@@ -12,11 +12,14 @@ function getArticle() {
     }
     httpRequest.onreadystatechange = function() {fillArticle(httpRequest);};
     httpRequest.open('POST', 'article/get', true);
-    httpRequest.send(null);
-}
-
-function setComment() {
-
+    let data = {
+        _token: document.getElementsByName('_token')[0].value,
+    };
+    const FD  = new FormData();
+    for( name in data ) {
+        FD.append( name, data[ name ] );
+    }
+    httpRequest.send( FD );
 }
 
 function getComments() {
@@ -27,8 +30,15 @@ function getComments() {
         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
     }
     httpRequest.onreadystatechange = function() {fillComments(httpRequest);};
-    httpRequest.open('POST', './getComments.php', true);
-    httpRequest.send(null);
+    httpRequest.open('POST', 'comment/get', true);
+    let data = {
+        _token: document.getElementsByName('_token')[0].value,
+    };
+    const FD  = new FormData();
+    for( name in data ) {
+        FD.append( name, data[ name ] );
+    }
+    httpRequest.send( FD );
 }
 
 function fillArticle(httpRequest) {
@@ -64,8 +74,9 @@ function putComment() {
     } else if (window.ActiveXObject) { // IE
         httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
     }
-    httpRequest.open('POST', './setComment.php', true);
+    httpRequest.open('POST', 'comment/post', true);
     let data = {
+        _token: document.getElementsByName('_token')[0].value,
         name: document.getElementById('inputName').value,
         email: document.getElementById('inputEmail').value,
         content: document.getElementById('textareaContent').value

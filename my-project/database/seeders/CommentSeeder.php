@@ -19,11 +19,13 @@ class CommentSeeder extends Seeder
             'article_id' => 1,
             'author_id' => 1,
             'content' => 'This is very useful article. I\'m excited!!!',
+            'created_at' => now()
         ]);
         DB::table('comments')->insert([
             'article_id' => 1,
             'author_id' => 2,
             'content' => 'SOLID sucks, functional programming rocks',
+            'created_at' => now()
         ]);
     }
 }

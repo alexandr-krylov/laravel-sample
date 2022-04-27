@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,6 @@ Route::get('comment', function() {
 });
 
 Route::post('article/get', [ArticleController::class, 'get']);
+Route::post('comment/get', [CommentController::class, 'get']);
+Route::post('comment/post', [CommentController::class, 'post']);
+

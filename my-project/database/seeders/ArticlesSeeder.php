@@ -39,7 +39,8 @@ class ArticlesSeeder extends Seeder
 <p>The SOLID acronym was introduced later, around 2004, by Michael Feathers.[11]</p>
 <p>Although the SOLID principles apply to any object-oriented design, they can also form
  a core philosophy for methodologies such as agile development or adaptive software development.</p>
-CONTENT
-        ]);
+CONTENT,
+             'created_at' => now(),
+            ]);
     }
 }
